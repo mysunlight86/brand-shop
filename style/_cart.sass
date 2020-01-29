@@ -1,0 +1,199 @@
+@import "_vars", "mixin"
+
+.row-product-header,
+.row-product 
+    display: flex
+    justify-content: space-between
+    border-bottom: solid 1px #eaeaea
+    padding: 20px 0
+
+
+.row-product-left 
+    width: $width-name
+    display: flex
+
+.cart-product-link
+    text-decoration: none
+
+.row-product-right 
+    width: $width-option
+    text-align: center
+    color: $gray-option
+    font-size: 13px
+    font-weight: 600
+    line-height: 30px
+
+
+.row-product-img 
+    margin-right: 20px
+    width: $width-pict
+    height: $height-pict
+
+
+.row-product-text 
+    font-size: 13px
+    font-weight: 600
+
+
+.row-product-h3 
+    color: $black
+    padding: 7px 0
+    margin-bottom: 20px
+
+
+.row-product-p 
+    color: $dark-gray
+    padding: 3px 0
+
+
+.row-product-p-gray 
+    color: $gray
+    font-weight: 300
+
+
+.row-product-box 
+    border-style: solid
+    border-width: 1px
+    border-color: #eaeaea
+    background-color: #ffffff
+    width: 54px
+    height: 30px
+    line-height: 30px
+
+
+.row-product-option-a 
+    text-decoration: underline
+    color: $gray-option
+    &:hover 
+        color: $red
+    
+
+
+.row-product-form 
+    border-style: solid
+    border-width: 1px
+    border-color: #eaeaea
+    background-color: #ffffff
+    width: 54px
+    height: 30px
+    line-height: 30px
+    text-align: center
+    +placeholder
+        color: $gray-option
+        font-size: 14px
+        font-weight: 600
+        line-height: 30px
+
+.row-product-name 
+    color: $black
+    font-size: 13px
+    font-weight: 700
+    text-transform: uppercase
+
+
+.buttons-order
+    display: flex
+    justify-content: space-between
+    margin: 44px 0 63px
+    &-action
+        border-style: solid
+        border-width: 1px
+        border-color: #eaeaea
+        background-color: #ffffff
+        width: 235px
+        height: 50px
+        color: #4a4a4a
+        font-size: 14px
+        font-weight: 700
+        text-transform: uppercase
+        text-align: center
+        line-height: 50px
+        text-decoration: none
+        &:hover
+            border-color: $red
+            color: $red
+
+.shipping-checkout 
+    display: flex
+    justify-content: space-between
+    margin-bottom: 79px
+    &-form 
+        &-h3 
+            color: $black
+            font-size: 16px
+            font-weight: 700
+            text-transform: uppercase
+        &-block 
+            display: block
+            border-style: solid
+            border-width: 1px
+            border-color: #eaeaea
+            background-color: #ffffff
+            width: 335px
+            height: 45px
+            padding-left: 20px
+            margin: 20px 0
+        &-select 
+            width: 355px
+            color: #b1b1b1
+            font-size: 13px
+            font-weight: 300
+        &-button
+            border-style: solid
+            border-width: 1px
+            border-color: #eaeaea
+            background-color: #ffffff
+            width: 100px
+            height: 35px
+            color: #4a4a4a
+            font-size: 11px
+            font-weight: 700
+            text-transform: uppercase
+            transition: background-color .3s
+            &:hover
+                color: $red
+                border-color: $red
+        &-p
+            color: #000000
+            font-size: 14px
+            font-weight: 300
+            margin-top: 28px
+    &-block 
+        background-color: #f5f3f3
+        width: $block-width - $block-padding * 2
+        height: $block-height - $block-padding * 2
+        text-align: right
+        padding: $block-padding
+        &-p 
+            color: #4a4a4a
+            font-size: 11px
+            font-weight: 400
+            margin-bottom: 14px
+        &-h3 
+            color: $black
+            font-size: 16px
+            font-weight: 700
+            &-span 
+                color: $red
+                margin-left: 20px
+        &-hr 
+            color: #e2e2e2
+            width: 275px
+            margin: 22px 0 17px
+        &-button 
+            background-color: $red
+            width: 273px
+            height: 50px
+            color: #ffffff
+            font-size: 16px
+            font-weight: 700
+            text-transform: uppercase
+            transition: background-color .3s
+            &:hover 
+                color: $red
+                background-color: #ffffff
+
+            
+        
+    
+
