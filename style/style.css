@@ -573,7 +573,8 @@
 }
 
 .product-description-button:hover {
-  background-color: #eeeeee;
+  background-color: #ef5b70;
+  color: #ffffff;
 }
 
 .product-description-select-name {
@@ -1879,6 +1880,9 @@ nav {
   margin: 0 auto;
   padding: 10px;
   line-height: 28px;
+  padding: 5px 15px;
+  background-color: #f16d7f;
+  color: #ffffff;
 }
 
 .offer {
