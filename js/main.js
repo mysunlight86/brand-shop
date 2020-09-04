@@ -1,4 +1,6 @@
 const cartId = document.getElementById('card');
+const cartSubTotal = document.getElementById('cart-sub-total');
+const cartGrandTotal = document.getElementById('cart-grand-total');
 
 let cartObject = {
   product1: {
@@ -6,7 +8,7 @@ let cartObject = {
     name: 'Mango People T-shirt',
     color: 'Red',
     size: 'Xll',
-    price: '150',
+    price: '100',
     quantity: 2,
     shipping: 'FREE',
   },
@@ -14,21 +16,32 @@ let cartObject = {
     url: 'img/cart-2.jpg',
     name: 'Mango People T-shirt',
     color: 'Red',
-    size: 'Xll',
-    price: '150',
-    quantity: 2,
+    size: 'X',
+    price: '200',
+    quantity: 1,
     shipping: 'FREE',
   },
   product3: {
     url: 'img/cart-3.jpg',
     name: 'Mango People T-shirt',
     color: 'Red',
-    size: 'Xll',
+    size: 'Xl',
     price: '150',
-    quantity: 2,
+    quantity: 3,
     shipping: 'FREE',
   },
 };
+
+function getSubtotal(cart) {
+  let subtotal = 0;
+  for (let product in cart) {
+    subtotal += cart[product].price * cart[product].quantity;
+  }
+  return subtotal;
+}
+
+cartSubTotal.textContent = `$${getSubtotal(cartObject)}`;
+cartGrandTotal.textContent = `$${getSubtotal(cartObject)}`;
 
 function isEmpty(obj) {
   for (let item in obj) {

@@ -698,6 +698,7 @@
   height: 30px;
   line-height: 30px;
   text-align: center;
+  font-weight: 600;
 }
 
 .row-product-form::-webkit-input-placeholder {
