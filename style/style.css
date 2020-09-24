@@ -280,7 +280,7 @@
   line-height: 26px;
 }
 
-.product-items-onproduct {
+#catalog {
   width: 846px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -290,7 +290,6 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin-bottom: 110px;
 }
 
 .description-product {
@@ -308,7 +307,8 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin-top: 97px;
+  margin-top: 65px;
+  margin-bottom: 110px;
   position: relative;
 }
 

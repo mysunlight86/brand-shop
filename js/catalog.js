@@ -73,7 +73,7 @@ function createCardElement(obj) {
   divPrice.textContent = `$${obj.price}`;
   aProductLink.appendChild(divPrice);
 
-  const aProductLink = document.createElement('a');
+  const aCartOnBlack = document.createElement('a');
   aCartOnBlack.classList.add('cart-on-black');
   aCartOnBlack.setAttribute('href', 'cart.html');
   aCartOnBlack.innerHTML = `<img src="img/cart-white.svg" alt="белая корзинка на темном фоне">Add to&nbsp;Cart`;
@@ -81,7 +81,9 @@ function createCardElement(obj) {
 }
 
 function showCatalog(arr) {
-
+  for (let item in arr) {
+    createCardElement(arr[item]);
+  }
 }
 
 showCatalog(product);
