@@ -1,19 +1,30 @@
-const divCartDrop = document.querySelector('.cart-drop');
+const divCartDrop = document.querySelector('#cart-drop');
+const divTotalText = document.getElementsByClassName('total-text')[1];
 
 let objectCart = {
   product1: {
     url: 'img/checkout-1.jpg',
     name: 'Rebox Zane',
     quantity: 1,
-    price: 250,
+    price: 150,
   },
   product2: {
     url: 'img/checkout-2.jpg',
     name: 'Rebox Zane',
     quantity: 1,
-    price: 250,
+    price: 200,
   },
 };
+
+function getSubtotal(cart) {
+  let subtotal = 0;
+  for (let product in cart) {
+    subtotal += cart[product].price * cart[product].quantity;
+  }
+  return subtotal;
+}
+
+divTotalText.textContent = `$${getSubtotal(objectCart)}.00`;
 
 function isEmpty(obj) {
   for (let item in obj) {
@@ -67,13 +78,6 @@ function buildCart(cart) {
   for (let product in cart) {
     createProductRow(cart[product]);
   }
-  divCartDrop.insertAdjacentHTML('beforeend',
-                                  `<div class="total-flex">
-                                    <div class="total-text">TOTAL</div>
-                                    <div class="total-text">$500.00</div>
-                                  </div>
-                                  <a href="checkout.html" class="account-button">Checkout</a>
-                                  <a href="cart.html" class="account-button account-button-active">Go&nbsp;to&nbsp;cart</a>`);
 }
 
 function showCart(cart) {
