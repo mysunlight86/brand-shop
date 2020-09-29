@@ -1,50 +1,59 @@
 const catalogId = document.getElementById('catalog');
 
-const product = [
+var product = [
   {
+    id: '003',
     url: 'img/onproduct-1.jpg',
     name: 'Mango People T-shirt',
-    price: '100',
+    price: 100,
   },
   {
+    id: '004',
     url: 'img/onproduct-2.jpg',
     name: 'Mango People T-shirt',
-    price: '100',
+    price: 125,
   },
   {
+    id: '005',
     url: 'img/onproduct-3.jpg',
     name: 'Mango People T-shirt',
-    price: '100',
+    price: 200,
   },
   {
+    id: '006',
     url: 'img/onproduct-4.jpg',
     name: 'Mango People T-shirt',
-    price: '100',
+    price: 175,
   },
   {
+    id: '007',
     url: 'img/onproduct-5.jpg',
     name: 'Mango People T-shirt',
-    price: '100',
+    price: 103,
   },
   {
+    id: '008',
     url: 'img/onproduct-6.jpg',
     name: 'Mango People T-shirt',
-    price: '100',
+    price: 149,
   },
   {
+    id: '009',
     url: 'img/onproduct-7.jpg',
     name: 'Mango People T-shirt',
-    price: '100',
+    price: 207,
   },
   {
+    id: '010',
     url: 'img/onproduct-8.jpg',
     name: 'Mango People T-shirt',
-    price: '100',
+    price: 238,
   },
   {
+    id: '011',
     url: 'img/onproduct-9.jpg',
     name: 'Mango People T-shirt',
-    price: '100',
+    price: 156,
   },
 ];
 
@@ -56,6 +65,7 @@ function createCardElement(obj) {
   const aProductLink = document.createElement('a');
   aProductLink.classList.add('product-link');
   aProductLink.setAttribute('href', 'product.html');
+  aProductLink.setAttribute('data-id', `${obj.id}`);
   divProductItem.appendChild(aProductLink);
 
   const divPicture = document.createElement('div');
@@ -70,7 +80,7 @@ function createCardElement(obj) {
 
   const divPrice = document.createElement('div');
   divPrice.classList.add('price');
-  divPrice.textContent = `$${obj.price}`;
+  divPrice.textContent = `$${obj.price.toFixed(2)}`;
   aProductLink.appendChild(divPrice);
 
   const aCartOnBlack = document.createElement('a');

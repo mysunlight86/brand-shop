@@ -1,14 +1,17 @@
 const divCartDrop = document.querySelector('#cart-drop');
 const divTotalText = document.getElementsByClassName('total-text')[1];
+const catalog = document.getElementById('catalog');
 
-let objectCart = {
+var objectCart = {
   product1: {
+    id: '001',
     url: 'img/checkout-1.jpg',
     name: 'Rebox Zane',
     quantity: 1,
     price: 150,
   },
   product2: {
+    id: '002',
     url: 'img/checkout-2.jpg',
     name: 'Rebox Zane',
     quantity: 1,
@@ -24,7 +27,7 @@ function getSubtotal(cart) {
   return subtotal;
 }
 
-divTotalText.textContent = `$${getSubtotal(objectCart)}.00`;
+divTotalText.textContent = `$${getSubtotal(objectCart).toFixed(2)}`;
 
 function isEmpty(obj) {
   for (let item in obj) {
@@ -38,6 +41,7 @@ function isEmpty(obj) {
 function createProductRow(obj) {
   const divAccountProduct = document.createElement('div');
   divAccountProduct.classList.add('account-product');
+  divAccountProduct.setAttribute('data-id', `${obj.id}`);
   divCartDrop.appendChild(divAccountProduct);
 
   const aAccountProductLink = document.createElement('a');
@@ -66,7 +70,7 @@ function createProductRow(obj) {
 
   const divCounts = document.createElement('div');
   divCounts.classList.add('counts');
-  divCounts.innerHTML = `${obj.quantity}&nbsp;x $${obj.price}`;
+  divCounts.innerHTML = `${obj.quantity}&nbsp;x $${obj.price.toFixed(2)}`;
   divAccountText.appendChild(divCounts);
 
   const aAccountProductClearInDiv = document.createElement('div');
@@ -75,6 +79,7 @@ function createProductRow(obj) {
 }
 
 function buildCart(cart) {
+  divCartDrop.textContent = '';
   for (let product in cart) {
     createProductRow(cart[product]);
   }
@@ -89,3 +94,35 @@ function showCart(cart) {
 }
 
 showCart(objectCart);
+
+function addToCart(event) {
+  event.preventDefault();
+  if (event.target.tagName === 'A') {
+    const currentId = event.target.previousSibling.dataset.id;
+    let foundId = false;
+    for (let item in objectCart) {
+      if (objectCart[item].id === currentId) {
+        foundId = true;
+        objectCart[item].quantity++;
+      }
+    }
+    if (foundId === false) {
+      const catalogGlobal = window.product;
+      for (let product in catalogGlobal) {
+        if (catalogGlobal[product].id === currentId) {
+          const lastIndexOfCart = `product${Object.keys(objectCart).length + 1}`;
+          objectCart[lastIndexOfCart] = {};
+          objectCart[lastIndexOfCart].id = catalogGlobal[product].id;
+          objectCart[lastIndexOfCart].name = catalogGlobal[product].name;
+          objectCart[lastIndexOfCart].quantity = 1;
+          objectCart[lastIndexOfCart].price = catalogGlobal[product].price;
+          objectCart[lastIndexOfCart].url = catalogGlobal[product].url;
+        }
+      }
+    }
+    showCart(objectCart);
+    divTotalText.textContent = `$${getSubtotal(objectCart).toFixed(2)}`;
+  }
+}
+
+catalog.addEventListener('click', addToCart);
