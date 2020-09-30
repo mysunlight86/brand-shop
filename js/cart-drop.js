@@ -27,8 +27,6 @@ function getSubtotal(cart) {
   return subtotal;
 }
 
-divTotalText.textContent = `$${getSubtotal(objectCart).toFixed(2)}`;
-
 function isEmpty(obj) {
   for (let item in obj) {
     if (obj.hasOwnProperty(item)) {
@@ -93,11 +91,9 @@ function showCart(cart) {
   }
 }
 
-showCart(objectCart);
-
 function addToCart(event) {
-  event.preventDefault();
   if (event.target.tagName === 'A') {
+    event.preventDefault();
     const currentId = event.target.previousSibling.dataset.id;
     let foundId = false;
     for (let item in objectCart) {
@@ -125,4 +121,24 @@ function addToCart(event) {
   }
 }
 
+function deleteFromCart(event) {
+  event.preventDefault();
+  if (event.target.tagName === 'I') {
+    const currentId = event.target.closest('.account-product').dataset.id;
+    for (let item in objectCart) {
+      if (objectCart[item].id === currentId) {
+        if (objectCart[item].quantity > 1) {
+          objectCart[item].quantity--;
+        }
+      }
+    }
+    showCart(objectCart);
+    divTotalText.textContent = `$${getSubtotal(objectCart).toFixed(2)}`;
+  }
+}
+
+showCart(objectCart);
+divTotalText.textContent = `$${getSubtotal(objectCart).toFixed(2)}`;
+
 catalog.addEventListener('click', addToCart);
+divCartDrop.addEventListener('click', deleteFromCart);
