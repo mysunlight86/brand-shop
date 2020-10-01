@@ -6,54 +6,98 @@ var product = [
     url: 'img/onproduct-1.jpg',
     name: 'Mango People T-shirt',
     price: 100,
+    featured: false,
   },
   {
     id: '004',
     url: 'img/onproduct-2.jpg',
     name: 'Mango People T-shirt',
     price: 125,
+    featured: false,
   },
   {
     id: '005',
     url: 'img/onproduct-3.jpg',
     name: 'Mango People T-shirt',
     price: 200,
+    featured: true,
   },
   {
     id: '006',
     url: 'img/onproduct-4.jpg',
     name: 'Mango People T-shirt',
     price: 175,
+    featured: false,
   },
   {
     id: '007',
     url: 'img/onproduct-5.jpg',
     name: 'Mango People T-shirt',
     price: 103,
+    featured: true,
   },
   {
     id: '008',
     url: 'img/onproduct-6.jpg',
     name: 'Mango People T-shirt',
     price: 149,
+    featured: false,
   },
   {
     id: '009',
     url: 'img/onproduct-7.jpg',
     name: 'Mango People T-shirt',
     price: 207,
+    featured: true,
   },
   {
     id: '010',
     url: 'img/onproduct-8.jpg',
     name: 'Mango People T-shirt',
     price: 238,
+    featured: false,
   },
   {
     id: '011',
     url: 'img/onproduct-9.jpg',
     name: 'Mango People T-shirt',
     price: 156,
+    featured: false,
+  },
+  {
+    id: '012',
+    url: 'img/product-1.jpg',
+    name: 'Mango People T-shirt',
+    price: 200,
+    featured: true,
+  },
+  {
+    id: '013',
+    url: 'img/product-2.jpg',
+    name: 'Mango People T-shirt',
+    price: 250,
+    featured: true,
+  },
+  {
+    id: '014',
+    url: 'img/product-4.jpg',
+    name: 'Mango People T-shirt',
+    price: 150,
+    featured: true,
+  },
+  {
+    id: '015',
+    url: 'img/product-5.jpg',
+    name: 'Mango People T-shirt',
+    price: 100,
+    featured: true,
+  },
+  {
+    id: '016',
+    url: 'img/product-7.jpg',
+    name: 'Mango People T-shirt',
+    price: 125,
+    featured: true,
   },
 ];
 
@@ -96,4 +140,32 @@ function showCatalog(arr) {
   }
 }
 
+function addToCart(event) {
+  event.preventDefault();
+  if (event.target.tagName === 'A') {
+    const currentId = event.target.previousSibling.dataset.id;
+    let foundId = false;
+    const cartGlobal = window.objectCart;
+    for (let item in cartGlobal) {
+      if (item === currentId) {
+        foundId = true;
+        cartGlobal[item].quantity++;
+      }
+    }
+    if (foundId === false) {
+      const catalogGlobal = window.product;
+      for (let product in catalogGlobal) {
+        if (catalogGlobal[product].id === currentId) {
+          cartGlobal[currentId] = Object.assign({}, catalogGlobal[product]);
+          cartGlobal[currentId].quantity = 1;
+        }
+      }
+    }
+    showCart(cartGlobal);
+    divTotalText.textContent = `$${getSubtotal(objectCart).toFixed(2)}`;
+  }
+}
+
 showCatalog(product);
+
+catalogId.addEventListener('click', addToCart);

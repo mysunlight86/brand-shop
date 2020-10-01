@@ -1,6 +1,6 @@
 const divCartDrop = document.querySelector('#cart-drop');
 const divTotalText = document.getElementsByClassName('total-text')[1];
-const catalog = document.getElementById('catalog');
+// const catalog = document.getElementById('catalog');
 
 var objectCart = {
   '001': {
@@ -9,6 +9,7 @@ var objectCart = {
     name: 'Rebox Zane',
     quantity: 1,
     price: 150,
+    featured: false,
   },
   '002': {
     id: '002',
@@ -16,6 +17,7 @@ var objectCart = {
     name: 'Rebox Zane',
     quantity: 1,
     price: 200,
+    featured: false,
   },
 };
 
@@ -91,30 +93,30 @@ function showCart(cart) {
   }
 }
 
-function addToCart(event) {
-  event.preventDefault();
-  if (event.target.tagName === 'A') {
-    const currentId = event.target.previousSibling.dataset.id;
-    let foundId = false;
-    for (let item in objectCart) {
-      if (item === currentId) {
-        foundId = true;
-        objectCart[item].quantity++;
-      }
-    }
-    if (foundId === false) {
-      const catalogGlobal = window.product;
-      for (let product in catalogGlobal) {
-        if (catalogGlobal[product].id === currentId) {
-          objectCart[currentId] = Object.assign({}, catalogGlobal[product]);
-          objectCart[currentId].quantity = 1;
-        }
-      }
-    }
-    showCart(objectCart);
-    divTotalText.textContent = `$${getSubtotal(objectCart).toFixed(2)}`;
-  }
-}
+// function addToCart(event) {
+//   event.preventDefault();
+//   if (event.target.tagName === 'A') {
+//     const currentId = event.target.previousSibling.dataset.id;
+//     let foundId = false;
+//     for (let item in objectCart) {
+//       if (item === currentId) {
+//         foundId = true;
+//         objectCart[item].quantity++;
+//       }
+//     }
+//     if (foundId === false) {
+//       const catalogGlobal = window.product;
+//       for (let product in catalogGlobal) {
+//         if (catalogGlobal[product].id === currentId) {
+//           objectCart[currentId] = Object.assign({}, catalogGlobal[product]);
+//           objectCart[currentId].quantity = 1;
+//         }
+//       }
+//     }
+//     showCart(objectCart);
+//     divTotalText.textContent = `$${getSubtotal(objectCart).toFixed(2)}`;
+//   }
+// }
 
 function deleteFromCart(event) {
   event.preventDefault();
@@ -137,5 +139,5 @@ function deleteFromCart(event) {
 showCart(objectCart);
 divTotalText.textContent = `$${getSubtotal(objectCart).toFixed(2)}`;
 
-catalog.addEventListener('click', addToCart);
+// catalog.addEventListener('click', addToCart);
 divCartDrop.addEventListener('click', deleteFromCart);
