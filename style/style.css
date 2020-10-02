@@ -879,6 +879,34 @@
   background-color: #ffffff;
 }
 
+.accordion {
+  background-color: #f2f2f2;
+  color: #222222;
+  cursor: pointer;
+  padding: 18px;
+  margin: 5px 0;
+  width: 100%;
+  border: none;
+  text-align: center;
+  outline: none;
+  font-size: 14px;
+  font-weight: 700;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #f8f3f4;
+  color: #f16d7f;
+}
+
+.details {
+  padding: 0 18px;
+  display: none;
+  background-color: white;
+  overflow: hidden;
+}
+
 .grid-product {
   margin-bottom: 93px;
 }

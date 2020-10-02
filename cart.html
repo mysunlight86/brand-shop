@@ -460,36 +460,40 @@
         <main>
             <div class="container">
                 <form action="#">
-                    <div class="grid-product">
-                        <div id="card"></div>
+                    <button class="accordion">Product Details</button>
+                    <div class="details">
+                        <div id="cart"></div>
+
+                        <div class="buttons-order">
+                            <input type="reset" value="cLEAR SHOPPING CART" class="buttons-order-action">
+                            <input type="submit" value="cONTINUE sHOPPING" class="buttons-order-action">
+                        </div>
                     </div>
 
-                    <div class="buttons-order">
-                        <input type="reset" value="cLEAR SHOPPING CART" class="buttons-order-action">
-                        <input type="submit" value="cONTINUE sHOPPING" class="buttons-order-action">
-                    </div>
-
-                    <div class="shipping-checkout">
-                        <div class="shipping-checkout-form">
-                            <h3 class="shipping-checkout-form-h3">Shipping Adress</h3>
-                            <select name="Bangladesh" id="Bangladesh" class="shipping-checkout-form-block shipping-checkout-form-select">
-                                <option value="Bangladesh">Bangladesh</option>
-                            </select>
-                            <input type="text" placeholder="State" class="shipping-checkout-form-block text-input">
-                            <input type="text" placeholder="Postcode / Zip" class="shipping-checkout-form-block text-input">
-                            <input type="submit" value="get a quote" class="shipping-checkout-form-button">
-                        </div>
-                        <div class="shipping-checkout-form">
-                            <h3 class="shipping-checkout-form-h3">coupon discount</h3>
-                            <p class="shipping-checkout-form-p">Enter your coupon code if&nbsp;you have one</p>
-                            <input type="text" placeholder="State" class="shipping-checkout-form-block text-input">
-                            <input type="button" value="Apply coupon" class="shipping-checkout-form-button">
-                        </div>
-                        <div class="shipping-checkout-block">
-                            <p class="shipping-checkout-block-p">Sub total <span style="margin-left: 20px;" id="cart-sub-total">$900</span></p>
-                            <h3 class="shipping-checkout-block-h3">GRAND TOTAL <span class="shipping-checkout-block-h3-span" id="cart-grand-total">$900</span></h3>
-                            <hr class="shipping-checkout-block-hr" />
-                            <input type="button" value="proceed to checkout" class="shipping-checkout-block-button">
+                    <button class="accordion">Shipping Details</button>
+                    <div class="details">
+                        <div class="shipping-checkout">
+                            <div class="shipping-checkout-form">
+                                <h3 class="shipping-checkout-form-h3">Shipping Adress</h3>
+                                <select name="Bangladesh" id="Bangladesh" class="shipping-checkout-form-block shipping-checkout-form-select">
+                                    <option value="Bangladesh">Bangladesh</option>
+                                </select>
+                                <input type="text" placeholder="State" class="shipping-checkout-form-block text-input">
+                                <input type="text" placeholder="Postcode / Zip" class="shipping-checkout-form-block text-input">
+                                <input type="submit" value="get a quote" class="shipping-checkout-form-button">
+                            </div>
+                            <div class="shipping-checkout-form">
+                                <h3 class="shipping-checkout-form-h3">coupon discount</h3>
+                                <p class="shipping-checkout-form-p">Enter your coupon code if&nbsp;you have one</p>
+                                <input type="text" placeholder="State" class="shipping-checkout-form-block text-input">
+                                <input type="button" value="Apply coupon" class="shipping-checkout-form-button">
+                            </div>
+                            <div class="shipping-checkout-block">
+                                <p class="shipping-checkout-block-p">Sub total <span style="margin-left: 20px;" id="cart-sub-total">$900</span></p>
+                                <h3 class="shipping-checkout-block-h3">GRAND TOTAL <span class="shipping-checkout-block-h3-span" id="cart-grand-total">$900</span></h3>
+                                <hr class="shipping-checkout-block-hr" />
+                                <input type="button" value="proceed to checkout" class="shipping-checkout-block-button">
+                            </div>
                         </div>
                     </div>
 

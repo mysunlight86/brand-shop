@@ -1,6 +1,7 @@
-const cartId = document.getElementById('card');
+const cartId = document.getElementById('cart');
 const cartSubTotal = document.getElementById('cart-sub-total');
 const cartGrandTotal = document.getElementById('cart-grand-total');
+const accordion = document.getElementsByClassName('accordion');
 
 let cartObject = {
   product1: {
@@ -143,4 +144,19 @@ function showCart(cart) {
   }
 }
 
+function toggleAccordion() {
+  for (let i = 0; i < accordion.length; i++) {
+    accordion[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      let details = this.nextElementSibling;
+      if (details.style.display === "block") {
+        details.style.display = "none";
+      } else {
+        details.style.display = "block";
+      }
+    });
+  }
+}
+
 showCart(cartObject);
+toggleAccordion();
