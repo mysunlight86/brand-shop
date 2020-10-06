@@ -7,7 +7,6 @@
     border-bottom: solid 1px #eaeaea
     padding: 20px 0
 
-
 .row-product-left
     width: $width-name
     display: flex
@@ -23,33 +22,27 @@
     font-weight: 600
     line-height: 30px
 
-
 .row-product-img
     margin-right: 20px
     width: $width-pict
     height: $height-pict
 
-
 .row-product-text
     font-size: 13px
     font-weight: 600
-
 
 .row-product-h3
     color: $black
     padding: 7px 0
     margin-bottom: 20px
 
-
 .row-product-p
     color: $dark-gray
     padding: 3px 0
 
-
 .row-product-p-gray
     color: $gray
     font-weight: 300
-
 
 .row-product-box
     border-style: solid
@@ -60,14 +53,11 @@
     height: 30px
     line-height: 30px
 
-
 .row-product-option-a
     text-decoration: underline
     color: $gray-option
     &:hover
         color: $red
-
-
 
 .row-product-form
     border-style: solid
@@ -90,7 +80,6 @@
     font-size: 13px
     font-weight: 700
     text-transform: uppercase
-
 
 .buttons-order
     display: flex
@@ -195,27 +184,36 @@
                 background-color: #ffffff
 
 .accordion
-  background-color: #f2f2f2
-  color: $black
-  cursor: pointer
-  padding: 18px
-  margin: 5px 0
-  width: 100%
-  border: none
-  text-align: center
-  outline: none
-  font-size: 14px
-  font-weight: 700
-  transition: 0.4s
+    background-color: #f2f2f2
+    color: $black
+    cursor: pointer
+    padding: 18px
+    margin: 5px 0
+    width: 100%
+    border: none
+    text-align: center
+    outline: none
+    font-size: 14px
+    font-weight: 700
+    transition: 0.4s
 
 .active, .accordion:hover
-  background-color: #f8f3f4
-  color: $red
+    background-color: #f8f3f4
+    color: $red
 
+.accordion:after
+    content: '\002B'
+    color: $black
+    font-weight: 700
+    float: right
+    margin-left: 5px
+
+.active:after
+    content: "\2212"
+    color: $red
 
 .details
-  padding: 0 18px
-  display: none
-  background-color: white
-  overflow: hidden
-
+    padding: 0 18px
+    display: none
+    background-color: white
+    overflow: hidden

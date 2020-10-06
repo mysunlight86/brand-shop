@@ -900,6 +900,19 @@
   color: #f16d7f;
 }
 
+.accordion:after {
+  content: '\002B';
+  color: #222222;
+  font-weight: 700;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+  color: #f16d7f;
+}
+
 .details {
   padding: 0 18px;
   display: none;
