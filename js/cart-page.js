@@ -2,6 +2,7 @@ const cartId = document.getElementById('cart');
 const cartSubTotal = document.getElementById('cart-sub-total');
 const cartGrandTotal = document.getElementById('cart-grand-total');
 const accordion = document.getElementsByClassName('accordion');
+const buttonsOrder = document.getElementsByClassName('buttons-order');
 
 let cartObject = {
   product1: {
@@ -9,7 +10,7 @@ let cartObject = {
     name: 'Mango People T-shirt',
     color: 'Red',
     size: 'Xll',
-    price: '100',
+    price: 100,
     quantity: 2,
     shipping: 'FREE',
   },
@@ -18,7 +19,7 @@ let cartObject = {
     name: 'Mango People T-shirt',
     color: 'Red',
     size: 'X',
-    price: '200',
+    price: 200,
     quantity: 1,
     shipping: 'FREE',
   },
@@ -27,7 +28,7 @@ let cartObject = {
     name: 'Mango People T-shirt',
     color: 'Red',
     size: 'Xl',
-    price: '150',
+    price: 150,
     quantity: 3,
     shipping: 'FREE',
   },
@@ -41,8 +42,8 @@ function getSubtotal(cart) {
   return subtotal;
 }
 
-cartSubTotal.textContent = `$${getSubtotal(cartObject)}`;
-cartGrandTotal.textContent = `$${getSubtotal(cartObject)}`;
+cartSubTotal.textContent = `$${getSubtotal(cartObject).toFixed(2)}`;
+cartGrandTotal.textContent = `$${getSubtotal(cartObject).toFixed(2)}`;
 
 function isEmpty(obj) {
   for (let item in obj) {
@@ -101,7 +102,7 @@ function initProductRow(obj) {
 
   const divRowProductRightPrice = document.createElement('div');
   divRowProductRightPrice.classList.add('row-product-option', 'row-product-right');
-  divRowProductRightPrice.textContent = `$${obj.price}`;
+  divRowProductRightPrice.textContent = `$${obj.price.toFixed(2)}`;
   divRowProduct.appendChild(divRowProductRightPrice);
 
   const divRowProductRightQuantity = divRowProductRightPrice.cloneNode(true);
@@ -113,7 +114,7 @@ function initProductRow(obj) {
   divRowProduct.appendChild(divRowProductRightShipping);
 
   const divRowProductRightSubtotal = divRowProductRightPrice.cloneNode(true);
-  divRowProductRightSubtotal.textContent = `$${obj.price * obj.quantity}`;
+  divRowProductRightSubtotal.textContent = `$${(obj.price * obj.quantity).toFixed(2)}`;
   divRowProduct.appendChild(divRowProductRightSubtotal);
 
   const divRowProductRightAction = divRowProductRightPrice.cloneNode(true);
@@ -160,3 +161,9 @@ function toggleAccordion() {
 
 showCart(cartObject);
 toggleAccordion();
+
+buttonsOrder[0].children[1].addEventListener('click', (event) => {
+  event.preventDefault();
+  document.getElementsByClassName('details')[1].style.display = 'block';
+  console.log(document.getElementsByClassName('details')[1]);
+});
