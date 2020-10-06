@@ -9,6 +9,8 @@ var objectCart = {
     quantity: 1,
     price: 150,
     featured: false,
+    color: 'Green',
+    size: 'Xl',
   },
   '002': {
     id: '002',
@@ -17,6 +19,8 @@ var objectCart = {
     quantity: 1,
     price: 200,
     featured: false,
+    color: 'White',
+    size: 'X',
   },
 };
 

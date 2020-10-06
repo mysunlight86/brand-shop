@@ -3,36 +3,38 @@ const cartSubTotal = document.getElementById('cart-sub-total');
 const cartGrandTotal = document.getElementById('cart-grand-total');
 const accordion = document.getElementsByClassName('accordion');
 const buttonsOrder = document.getElementsByClassName('buttons-order');
+const globalCart = window.objectCart;
+// console.log(window.objectCart);
 
-let cartObject = {
-  product1: {
-    url: 'img/cart-1.jpg',
-    name: 'Mango People T-shirt',
-    color: 'Red',
-    size: 'Xll',
-    price: 100,
-    quantity: 2,
-    shipping: 'FREE',
-  },
-  product2: {
-    url: 'img/cart-2.jpg',
-    name: 'Mango People T-shirt',
-    color: 'Red',
-    size: 'X',
-    price: 200,
-    quantity: 1,
-    shipping: 'FREE',
-  },
-  product3: {
-    url: 'img/cart-3.jpg',
-    name: 'Mango People T-shirt',
-    color: 'Red',
-    size: 'Xl',
-    price: 150,
-    quantity: 3,
-    shipping: 'FREE',
-  },
-};
+// let cartObject = {
+//   product1: {
+//     url: 'img/cart-1.jpg',
+//     name: 'Mango People T-shirt',
+//     color: 'Red',
+//     size: 'Xll',
+//     price: 100,
+//     quantity: 2,
+//     shipping: 'FREE',
+//   },
+//   product2: {
+//     url: 'img/cart-2.jpg',
+//     name: 'Mango People T-shirt',
+//     color: 'Red',
+//     size: 'X',
+//     price: 200,
+//     quantity: 1,
+//     shipping: 'FREE',
+//   },
+//   product3: {
+//     url: 'img/cart-3.jpg',
+//     name: 'Mango People T-shirt',
+//     color: 'Red',
+//     size: 'Xl',
+//     price: 150,
+//     quantity: 3,
+//     shipping: 'FREE',
+//   },
+// };
 
 function getSubtotal(cart) {
   let subtotal = 0;
@@ -42,8 +44,8 @@ function getSubtotal(cart) {
   return subtotal;
 }
 
-cartSubTotal.textContent = `$${getSubtotal(cartObject).toFixed(2)}`;
-cartGrandTotal.textContent = `$${getSubtotal(cartObject).toFixed(2)}`;
+cartSubTotal.textContent = `$${getSubtotal(globalCart).toFixed(2)}`;
+cartGrandTotal.textContent = `$${getSubtotal(globalCart).toFixed(2)}`;
 
 function isEmpty(obj) {
   for (let item in obj) {
@@ -159,7 +161,7 @@ function toggleAccordion() {
   }
 }
 
-showCart(cartObject);
+showCart(globalCart);
 toggleAccordion();
 
 buttonsOrder[0].children[1].addEventListener('click', (event) => {
