@@ -3,38 +3,8 @@ const cartSubTotal = document.getElementById('cart-sub-total');
 const cartGrandTotal = document.getElementById('cart-grand-total');
 const accordion = document.getElementsByClassName('accordion');
 const buttonsOrder = document.getElementsByClassName('buttons-order');
-const globalCart = window.objectCart;
-// console.log(window.objectCart);
 
-// let cartObject = {
-//   product1: {
-//     url: 'img/cart-1.jpg',
-//     name: 'Mango People T-shirt',
-//     color: 'Red',
-//     size: 'Xll',
-//     price: 100,
-//     quantity: 2,
-//     shipping: 'FREE',
-//   },
-//   product2: {
-//     url: 'img/cart-2.jpg',
-//     name: 'Mango People T-shirt',
-//     color: 'Red',
-//     size: 'X',
-//     price: 200,
-//     quantity: 1,
-//     shipping: 'FREE',
-//   },
-//   product3: {
-//     url: 'img/cart-3.jpg',
-//     name: 'Mango People T-shirt',
-//     color: 'Red',
-//     size: 'Xl',
-//     price: 150,
-//     quantity: 3,
-//     shipping: 'FREE',
-//   },
-// };
+let globalCart = window.objectCart;
 
 function getSubtotal(cart) {
   let subtotal = 0;
@@ -138,7 +108,7 @@ function initCart(cart) {
   }
 }
 
-function showCart(cart) {
+function showCartOnPage(cart) {
   if (isEmpty(cart)) {
     cartId.textContent = 'Корзина пуста';
     cartId.style.padding = '20px 0';
@@ -161,11 +131,19 @@ function toggleAccordion() {
   }
 }
 
-showCart(globalCart);
+showCartOnPage(globalCart);
 toggleAccordion();
+
+buttonsOrder[0].children[0].addEventListener('click', () => {
+  globalCart = {};
+  showCartOnPage(globalCart);
+  cartSubTotal.textContent = `$${getSubtotal(globalCart).toFixed(2)}`;
+  cartGrandTotal.textContent = `$${getSubtotal(globalCart).toFixed(2)}`;
+  showCart(globalCart);
+  divTotalText.textContent = `$${getSubtotal(globalCart).toFixed(2)}`;
+});
 
 buttonsOrder[0].children[1].addEventListener('click', (event) => {
   event.preventDefault();
   document.getElementsByClassName('details')[1].style.display = 'block';
-  console.log(document.getElementsByClassName('details')[1]);
 });

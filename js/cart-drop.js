@@ -1,5 +1,5 @@
 const divCartDrop = document.querySelector('#cart-drop');
-const divTotalText = document.getElementsByClassName('total-text')[1];
+var divTotalText = document.getElementsByClassName('total-text')[1];
 
 var objectCart = {
   '001': {
