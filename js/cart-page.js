@@ -1,6 +1,6 @@
 const cartId = document.getElementById('cart');
-const cartSubTotal = document.getElementById('cart-sub-total');
-const cartGrandTotal = document.getElementById('cart-grand-total');
+var cartSubTotal = document.getElementById('cart-sub-total');
+var cartGrandTotal = document.getElementById('cart-grand-total');
 const accordion = document.getElementsByClassName('accordion');
 const buttonsOrder = document.getElementsByClassName('buttons-order');
 
@@ -160,4 +160,26 @@ cartId.addEventListener('input', (event) => {
   cartGrandTotal.textContent = `$${getSubtotal(globalCart).toFixed(2)}`;
   showCart(globalCart);
   divTotalText.textContent = `$${getSubtotal(globalCart).toFixed(2)}`;
+});
+
+cartId.addEventListener('click', (event) => {
+  event.preventDefault();
+  if (event.target.tagName === 'I') {
+    const parentProduct = event.target.closest('.row-product');
+    const currentId = parentProduct.dataset.id;
+    for (let item in globalCart) {
+      if (item === currentId) {
+        if (globalCart[item].quantity > 1) {
+          globalCart[item].quantity--;
+        } else {
+          delete globalCart[item];
+        }
+      }
+    }
+    showCartOnPage(globalCart);
+    cartSubTotal.textContent = `$${getSubtotal(globalCart).toFixed(2)}`;
+    cartGrandTotal.textContent = `$${getSubtotal(globalCart).toFixed(2)}`;
+    showCart(globalCart);
+    divTotalText.textContent = `$${getSubtotal(globalCart).toFixed(2)}`;
+  }
 });
