@@ -11,6 +11,7 @@ var objectCart = {
     featured: false,
     color: 'Green',
     size: 'Xl',
+    shipping: 'FREE',
   },
   '002': {
     id: '002',
@@ -21,6 +22,7 @@ var objectCart = {
     featured: false,
     color: 'White',
     size: 'X',
+    shipping: 'FREE',
   },
 };
 

@@ -29,6 +29,7 @@ function isEmpty(obj) {
 function initProductRow(obj) {
   const divRowProduct = document.createElement('div');
   divRowProduct.className = 'row-product';
+  divRowProduct.setAttribute('data-id', `${obj.id}`);
   cartId.appendChild(divRowProduct);
 
   const aCartProductLink = document.createElement('a');
@@ -87,6 +88,7 @@ function initProductRow(obj) {
 
   const divRowProductRightSubtotal = divRowProductRightPrice.cloneNode(true);
   divRowProductRightSubtotal.textContent = `$${(obj.price * obj.quantity).toFixed(2)}`;
+  divRowProductRightSubtotal.classList.add('total-price-for-product');
   divRowProduct.appendChild(divRowProductRightSubtotal);
 
   const divRowProductRightAction = divRowProductRightPrice.cloneNode(true);
@@ -146,4 +148,16 @@ buttonsOrder[0].children[0].addEventListener('click', () => {
 buttonsOrder[0].children[1].addEventListener('click', (event) => {
   event.preventDefault();
   document.getElementsByClassName('details')[1].style.display = 'block';
+});
+
+cartId.addEventListener('input', (event) => {
+  const parentProduct = event.target.closest('.row-product');
+  const currentId = parentProduct.dataset.id;
+  globalCart[currentId].quantity = event.target.value;
+  const totalPriceForProduct = parentProduct.querySelector('.total-price-for-product');
+  totalPriceForProduct.textContent = `$${(globalCart[currentId].price * globalCart[currentId].quantity).toFixed(2)}`;
+  cartSubTotal.textContent = `$${getSubtotal(globalCart).toFixed(2)}`;
+  cartGrandTotal.textContent = `$${getSubtotal(globalCart).toFixed(2)}`;
+  showCart(globalCart);
+  divTotalText.textContent = `$${getSubtotal(globalCart).toFixed(2)}`;
 });
