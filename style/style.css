@@ -280,7 +280,7 @@
   line-height: 26px;
 }
 
-#catalog {
+.goods-list {
   width: 846px;
   display: -webkit-box;
   display: -ms-flexbox;

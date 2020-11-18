@@ -1,6 +1,6 @@
-const catalogId = document.getElementById('catalog');
+const goodsList = document.querySelector('.goods-list');
 
-var product = [
+var goods = [
   {
     id: '003',
     url: 'img/onproduct-1.jpg',
@@ -104,7 +104,7 @@ var product = [
 function createCardElement(obj) {
   const divProductItem = document.createElement('div');
   divProductItem.classList.add('product-item');
-  catalogId.appendChild(divProductItem);
+  goodsList.appendChild(divProductItem);
 
   const aProductLink = document.createElement('a');
   aProductLink.classList.add('product-link');
@@ -153,7 +153,7 @@ function addToCart(event) {
       }
     }
     if (foundId === false) {
-      const catalogGlobal = window.product;
+      const catalogGlobal = window.goods;
       for (let product in catalogGlobal) {
         if (catalogGlobal[product].id === currentId) {
           cartGlobal[currentId] = Object.assign({}, catalogGlobal[product]);
@@ -166,6 +166,6 @@ function addToCart(event) {
   }
 }
 
-showCatalog(product);
+showCatalog(goods);
 
-catalogId.addEventListener('click', addToCart);
+goodsList.addEventListener('click', addToCart);
