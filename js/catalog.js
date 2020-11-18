@@ -114,7 +114,7 @@ const renderItem = ({id, cover, name, price}) => `<div class="product-item">
                                                   </div>`;
 
 const renderlist = items => {
-    const itemsHtmls = items.map(renderItem); // получаем массив разметок наших товаров
+    const itemsHtmls = items.map(renderItem).join(''); // получаем массив разметок наших товаров
     goodsList.innerHTML = itemsHtmls;
 };
 
