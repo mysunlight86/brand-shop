@@ -1300,18 +1300,18 @@ body {
   border: 1px solid #f16d7f;
 }
 
-.cart {
+.cart-button {
   padding: 26px;
   position: relative;
 }
 
-.cart:hover .cart-drop {
+.cart-button:hover .cart-drop {
   display: block;
   left: -7px;
   top: 73px;
 }
 
-.cart:hover .account-drop:before {
+.cart-button:hover .account-drop:before {
   left: 0px;
   top: 0px;
 }
