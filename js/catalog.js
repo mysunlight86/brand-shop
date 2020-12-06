@@ -101,24 +101,69 @@ var goods = [
   },
 ];
 
-const renderItem = ({id, cover, name, price}) => `<div class="product-item">
-                                                    <a href="product.html" data-id="${id}" class="product-link">
-                                                      <div class="picture" style="background-image: url(${cover});"></div>
-                                                      <div class="description-product">${name}</div>
-                                                      <div class="price">$${price.toFixed(2)}</div>
-                                                    </a>
-                                                    <a href="cart.html" class="cart-on-black">
-                                                      <img src="img/cart-white.svg" alt="белая корзинка на темном фоне">
-                                                      Add to&nbsp;Cart
-                                                    </a>
-                                                  </div>`;
+class GoodsItem {
+  constructor(id, cover, name, price) {
+    this.id = id;
+    this.cover = cover;
+    this.name = name;
+    this.price = price;
+  }
 
-const renderlist = items => {
-    const itemsHtmls = items.map(renderItem).join(''); // получаем массив разметок наших товаров
-    goodsList.innerHTML = itemsHtmls;
-};
+  render() {
+    return `<div class="product-item">
+      <a href="product.html" data-id="${this.id}" class="product-link">
+        <div class="picture" style="background-image: url(${this.cover});"></div>
+        <div class="description-product">${this.name}</div>
+        <div class="price">$${this.price.toFixed(2)}</div>
+      </a>
+      <a href="cart.html" class="cart-on-black">
+        <img src="img/cart-white.svg" alt="белая корзинка на темном фоне">
+        Add to&nbsp;Cart
+      </a>
+    </div>`;
+  }
+}
 
-renderlist(goods);
+class GoodsList {
+  constructor() {
+    this.goods = [];
+  }
+
+  fetchGoods() {
+    // console.log(goods);
+    // this.goods = goods;
+    this.goods = goods.map(item => new GoodsItem(item.id, item.cover, item.name, item.price));
+  }
+
+  render() {
+    const itemsHtmls = this.goods.map(item => item.render());
+    return itemsHtmls.join('');
+  }
+}
+
+const list = new GoodsList();
+list.fetchGoods();
+
+goodsList.innerHTML = list.render();
+
+// const renderItem = ({id, cover, name, price}) => `<div class="product-item">
+//                                                     <a href="product.html" data-id="${id}" class="product-link">
+//                                                       <div class="picture" style="background-image: url(${cover});"></div>
+//                                                       <div class="description-product">${name}</div>
+//                                                       <div class="price">$${price.toFixed(2)}</div>
+//                                                     </a>
+//                                                     <a href="cart.html" class="cart-on-black">
+//                                                       <img src="img/cart-white.svg" alt="белая корзинка на темном фоне">
+//                                                       Add to&nbsp;Cart
+//                                                     </a>
+//                                                   </div>`;
+
+// const renderlist = items => {
+//     const itemsHtmls = items.map(renderItem).join(''); // получаем массив разметок наших товаров
+//     goodsList.innerHTML = itemsHtmls;
+// };
+
+// renderlist(goods);
 
 function addToCart(event) {
   event.preventDefault();
