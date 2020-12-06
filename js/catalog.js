@@ -130,40 +130,33 @@ class GoodsList {
   }
 
   fetchGoods() {
-    // console.log(goods);
-    // this.goods = goods;
-    this.goods = goods.map(item => new GoodsItem(item.id, item.cover, item.name, item.price));
+    this.goods = goods;
+    this.goodsArrayObjects = this.goods.map(item => new GoodsItem(item.id, item.cover, item.name, item.price));
   }
 
   render() {
-    const itemsHtmls = this.goods.map(item => item.render());
+    const itemsHtmls = this.goodsArrayObjects.map(item => item.render());
     return itemsHtmls.join('');
   }
+
+  getTotalPrice() {
+    let totalPrice = 0;
+    this.goods.forEach(element => totalPrice += element.price);
+    return totalPrice;
+  }
 }
+
+class CartList {}
+
+class CartItem {}
 
 const list = new GoodsList();
 list.fetchGoods();
 
 goodsList.innerHTML = list.render();
 
-// const renderItem = ({id, cover, name, price}) => `<div class="product-item">
-//                                                     <a href="product.html" data-id="${id}" class="product-link">
-//                                                       <div class="picture" style="background-image: url(${cover});"></div>
-//                                                       <div class="description-product">${name}</div>
-//                                                       <div class="price">$${price.toFixed(2)}</div>
-//                                                     </a>
-//                                                     <a href="cart.html" class="cart-on-black">
-//                                                       <img src="img/cart-white.svg" alt="белая корзинка на темном фоне">
-//                                                       Add to&nbsp;Cart
-//                                                     </a>
-//                                                   </div>`;
-
-// const renderlist = items => {
-//     const itemsHtmls = items.map(renderItem).join(''); // получаем массив разметок наших товаров
-//     goodsList.innerHTML = itemsHtmls;
-// };
-
-// renderlist(goods);
+// console.log(goods);
+// console.log(list.getTotalPrice());
 
 function addToCart(event) {
   event.preventDefault();
